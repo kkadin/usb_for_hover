@@ -79,6 +79,27 @@ void SendMouseReport(uint8_t buttons, int8_t x, int8_t y, int8_t wheel) {
 
     USBD_HID_Mouse_SendReport(&hUsbDevice, (uint8_t*)&mouse_report, sizeof(mouse_report));
 }
+
+typedef struct {
+    uint8_t tip_switch : 1;
+    uint8_t in_range : 1;
+    uint8_t padding : 6;
+    uint16_t x;
+    uint16_t y;
+} HID_HoverReport_TypeDef;
+
+void SendHoverReport(uint8_t tip_switch, uint8_t in_range, uint16_t x, uint16_t y) {
+    HID_HoverReport_TypeDef hover_report;
+
+    hover_report.tip_switch = tip_switch;
+    hover_report.in_range = in_range;
+    hover_report.padding = 0;
+    hover_report.x = x;
+    hover_report.y = y;
+
+    USBD_HID_Mouse_SendReport(&hUsbDevice, (uint8_t*)&hover_report, sizeof(hover_report));
+}
+
 /* USER CODE END 0 */
 
 /**
@@ -131,12 +152,26 @@ int main(void)
   	HAL_GPIO_TogglePin(GPIOG,GPIO_PIN_2);
   	HAL_Delay(500);
 
+    #if 0
     // Example: Move mouse cursor to the right
     SendMouseReport(0x00, 10, 0, 0);
     HAL_Delay(100);
 
     // Example: Move mouse cursor to the left
     SendMouseReport(0x00, -10, 0, 0);
+    HAL_Delay(100);
+    #endif
+
+    // Example: Hover at coordinates (100, 200)
+    SendHoverReport(0, 1, 100, 200);
+    HAL_Delay(100);
+
+    // Example: Hover at coordinates (200, 300)
+    SendHoverReport(0, 1, 200, 300);
+    HAL_Delay(100);
+
+    // Example: No hover (out of range)
+    SendHoverReport(0, 0, 0, 0);
     HAL_Delay(100);
   }
   /* USER CODE END 3 */

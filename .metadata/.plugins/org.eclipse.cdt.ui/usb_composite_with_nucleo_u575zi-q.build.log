@@ -1,6 +1,5 @@
-16:20:47 **** Incremental Build of configuration Debug for project usb_composite_with_nucleo_u575zi-q ****
+22:19:31 **** Incremental Build of configuration Debug for project usb_composite_with_nucleo_u575zi-q ****
 make -j12 all 
-arm-none-eabi-gcc "../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/App/usb_device.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_FULL_LL_DRIVER -DUSE_HAL_DRIVER -DSTM32U575xx -c -I../Core/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -I../Composite -I../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/COMPOSITE/Inc -I../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Core/Inc -I../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/App -I../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Target -I../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/HID_MOUSE/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/App/usb_device.d" -MT"Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/App/usb_device.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/App/usb_device.o"
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_FULL_LL_DRIVER -DUSE_HAL_DRIVER -DSTM32U575xx -c -I../Core/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -I../Composite -I../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/COMPOSITE/Inc -I../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Core/Inc -I../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/App -I../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Target -I../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/HID_MOUSE/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 ../Core/Src/main.c: In function 'SendMouseReport':
 ../Core/Src/main.c:80:5: warning: implicit declaration of function 'USBD_HID_Mouse_SendReport' [-Wimplicit-function-declaration]
@@ -12,11 +11,11 @@ Finished building target: usb_composite_with_nucleo_u575zi-q.elf
 arm-none-eabi-size  usb_composite_with_nucleo_u575zi-q.elf 
 arm-none-eabi-objdump -h -S usb_composite_with_nucleo_u575zi-q.elf  > "usb_composite_with_nucleo_u575zi-q.list"
    text	   data	    bss	    dec	    hex	filename
-  37788	    398	   4432	  42618	   a67a	usb_composite_with_nucleo_u575zi-q.elf
+  37836	    374	   4432	  42642	   a692	usb_composite_with_nucleo_u575zi-q.elf
 Finished building: default.size.stdout
  
 Finished building: usb_composite_with_nucleo_u575zi-q.list
  
 
-16:20:50 Build Finished. 0 errors, 1 warnings. (took 2s.426ms)
+22:19:33 Build Finished. 0 errors, 1 warnings. (took 1s.928ms)
 
