@@ -27,7 +27,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "usb_device.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -60,7 +60,25 @@ static void SystemPower_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+//extern USBD_HandleTypeDef hUsbDevice;
 
+typedef struct {
+    uint8_t buttons;
+    int8_t x;
+    int8_t y;
+    int8_t wheel;
+} HID_MouseReport_TypeDef;
+
+void SendMouseReport(uint8_t buttons, int8_t x, int8_t y, int8_t wheel) {
+    HID_MouseReport_TypeDef mouse_report;
+
+    mouse_report.buttons = buttons;
+    mouse_report.x = x;
+    mouse_report.y = y;
+    mouse_report.wheel = wheel;
+
+    USBD_HID_Mouse_SendReport(&hUsbDevice, (uint8_t*)&mouse_report, sizeof(mouse_report));
+}
 /* USER CODE END 0 */
 
 /**
@@ -112,6 +130,14 @@ int main(void)
     /* USER CODE BEGIN 3 */
   	HAL_GPIO_TogglePin(GPIOG,GPIO_PIN_2);
   	HAL_Delay(500);
+
+    // Example: Move mouse cursor to the right
+    SendMouseReport(0x00, 10, 0, 0);
+    HAL_Delay(100);
+
+    // Example: Move mouse cursor to the left
+    SendMouseReport(0x00, -10, 0, 0);
+    HAL_Delay(100);
   }
   /* USER CODE END 3 */
 }
