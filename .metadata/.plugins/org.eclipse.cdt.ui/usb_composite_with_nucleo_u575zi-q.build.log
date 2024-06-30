@@ -1,0 +1,10 @@
+08:56:38 **** Build of configuration Debug for project usb_composite_with_nucleo_u575zi-q ****
+make -j12 all 
+arm-none-eabi-size  usb_composite_with_nucleo_u575zi-q.elf 
+   text	   data	    bss	    dec	    hex	filename
+  37588	    398	   4432	  42418	   a5b2	usb_composite_with_nucleo_u575zi-q.elf
+Finished building: default.size.stdout
+ 
+
+08:56:39 Build Finished. 0 errors, 0 warnings. (took 930ms)
+
